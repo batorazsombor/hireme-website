@@ -192,19 +192,44 @@ button.submit-btn:hover {
     font-weight: 600;
 }
 
-/* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column-reverse; /* Puts image on top on mobile, text below */
-        text-align: left;
-    }
-    
-    .hero-image img {
-        max-width: 100%;
+/* Mobile adjustments (up to 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
     }
 
-    button.submit-btn {
-        width: 100%; /* Full width button on mobile */
+    /* This allows the children of left/right side to move independently */
+    .left-side, .right-side {
+        display: contents;
+    }
+
+    /* 1. Logo at the top right */
+    .logo-container {
+        order: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 0;
+    }
+
+    /* 2. Headline & 3. Text */
+    .hero-content {
+        order: 2;
+        text-align: left;
+    }
+
+    /* 4. Group 355 image */
+    .image-container {
+        order: 3;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    /* 5. Newsletter */
+    .newsletter-container {
+        order: 4;
+        width: 100%;
     }
 
 }
