@@ -23,11 +23,11 @@
                 <h2>Hírlevél</h2>
                 <p class="subtext">Iratkozzon fel, hogy elsőként, ingyen próbálhassa ki termékünket!</p>
 
-                <form action="https://assets.mailerlite.com/jsonp/1959068/forms/175419198288167989/subscribe" method="POST">
+                <form id="ml-form" action="https://assets.mailerlite.com/jsonp/1959068/forms/175419198288167989/subscribe" method="POST">
                     
-                    <input type="text" name="fields[company]" placeholder="Cégnév" required>
+                    <input type="text" id="comp-field" name="fields[company]" placeholder="Cégnév" required>
                     
-                    <input type="email" name="fields[email]" placeholder="Email cím" required>
+                    <input type="email" id="email-field" name="fields[email]" placeholder="Email cím" required>
 
                     <button type="submit" class="submit-btn">Feliratkozom</button>
                 </form>
@@ -43,9 +43,38 @@
         </section>
     </div>
 
-</body>
+    <script>
+    document.getElementById('ml-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevents the default MailerLite redirect
 
+        const actionUrl = this.getAttribute('action');
+        const formData = new FormData();
+        
+        // Mapping your fields
+        formData.append('fields[company]', document.getElementById('comp-field').value);
+        formData.append('fields[email]', document.getElementById('email-field').value);
+        formData.append('ml-submit', '1');
+
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Allows the request to hit MailerLite's server
+        })
+        .then(() => {
+            // Forces the redirect to your custom page immediately after sending
+            window.location.href = "https://welcome.hireme.co.hu/thankyou.html";
+        })
+        .catch((error) => {
+            console.error('Submission error:', error);
+            // Fallback: Redirect anyway to ensure the user isn't stuck
+            window.location.href = "https://welcome.hireme.co.hu/thankyou.html";
+        });
+    });
+    </script>
+
+</body>
 </html>
+
 
 
 
