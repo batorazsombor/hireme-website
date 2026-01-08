@@ -3,83 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HireMe - Munkaerő toborzás</title>
-    <link rel="icon" type="image/svg+xml" href="Group 280.png">
+    <title>HireMe - Találjon munkatársat villámgyorsan</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">
-                <img src="Group 60.svg" alt="HireMe Tie Logo">
-            </a>
-        </header>
+    <header>
+        <div class="container">
+            <img src="HireMeLogo.png" alt="HireMe Logo" class="logo">
+        </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-content">
+    <main class="container">
+        <div class="hero-section">
+            
+            <div class="left-col">
                 <h1>Találjon munkatársat villámgyorsan és precízen a HireMe-vel!</h1>
-                
-                <h2>Hírlevél</h2>
-                <p class="subtext">Iratkozzon fel, hogy elsőként, ingyen próbálhassa ki termékünket!</p>
 
-                <form id="ml-form" action="https://assets.mailerlite.com/jsonp/1959068/forms/175419198288167989/subscribe" method="POST">
+                <ul class="feature-list">
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>AI jelölt lista 1 gombnyomással</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>EFO napok egyszerű jelentése</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Pofonegyszerű hirdetéskezelés</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Automatikus, névszóló elfogadó / visszautasító email a jelölt számára</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Hirdetési effektivitással kapcsolatos AI ajánlások a HR-es trendeket figyelembevéve</span>
+                    </li>
+                </ul>
+
+                <div class="newsletter-box">
+                    <h2>Hírlevél</h2>
+                    <p>Iratkozzon fel, hogy elsőként, ingyen próbálhassa ki termékünket!</p>
                     
-                    <input type="text" id="comp-field" name="fields[company]" placeholder="Cégnév" required>
-                    
-                    <input type="email" id="email-field" name="fields[email]" placeholder="Email cím" required>
-
-                    <button type="submit" class="submit-btn">Feliratkozom</button>
-                </form>
-
-                <p class="description">
-                    A HireMe egy mesterséges intelligencia motorú, innovatív munkaközvetítő platform. Célunk, hogy a vendéglátóiparban ne okozzon többé fejfájást a toborzás: intelligens rendszerünk 3 napon belül megtalálja a legkompetensebb, leginkább passzoló munkavállalót!
-                </p>
+                    <form id="newsletterForm" action="https://assets.mailerlite.com/jsonp/1959068/forms/175419198288167989/subscribe" method="POST">
+                        <input type="text" name="fields[company]" placeholder="Cégnév" required>
+                        
+                        <input type="email" name="fields[email]" placeholder="Email cím" required>
+                        
+                        <p class="spam-notice">Nincs spam, bármikor leiratkozhat</p>
+                        
+                        <button type="submit">Feliratkozom</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="hero-image">
-                <img src="Group 355.svg" alt="Séfek és konyhai munka">
+            <div class="right-col">
+                <div class="image-wrapper mockup-wrapper">
+                    <img src="HireMe Website Mockup.jpg" alt="HireMe Software Dashboard">
+                </div>
+                <div class="image-wrapper workers-wrapper">
+                    <img src="HospitalityWorkersGroup.jpg" alt="Hospitality Workers">
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+
+        <footer class="description-text">
+            <p>
+                A HireMe egy mesterséges intelligencia motorú, innovatív munkaközvetítő platform. Célunk, hogy a vendéglátóiparban ne okozzon többé fejfájást a toborzás: intelligens rendszerünk 3 napon belül megtalálja a legkompetensebb, leginkább passzoló munkavállalót! Rendszerünk a munkavállalóval szembeni korrektség jegyében 3 nap, azaz 72 óra leteltével visszautasító email-t kap, amennyiben a munkáltató nem reagál jelentkezésére. A HireMe tisztán, logikusan ábrázolja hirdetési aktivitást, és, amennyiben szükséges módosításokkal kapcsolatos ajánlásokat tesz. Hisszük, rendszereink használatával a vendéglátóiparnak nem kell többé törődnie a folyamatosan cserélődő munkaerővel, és hosszútávú munkakapcsolatok kiépítésére lesz lehetősége. Iratkozzon fel hírlevelünkre, hogy ingyen tesztelhesse termékeinket!
+            </p>
+        </footer>
+    </main>
 
     <script>
-    document.getElementById('ml-form').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevents the default MailerLite redirect
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the default form submission to handle it via JS
 
-        const actionUrl = this.getAttribute('action');
-        const formData = new FormData();
-        
-        // Mapping your fields
-        formData.append('fields[company]', document.getElementById('comp-field').value);
-        formData.append('fields[email]', document.getElementById('email-field').value);
-        formData.append('ml-submit', '1');
+            const form = e.target;
+            const formData = new FormData(form);
 
-        fetch(actionUrl, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors' // Allows the request to hit MailerLite's server
-        })
-        .then(() => {
-            // Forces the redirect to your custom page immediately after sending
-            window.location.href = "https://welcome.hireme.co.hu/thankyou.html";
-        })
-        .catch((error) => {
-            console.error('Submission error:', error);
-            // Fallback: Redirect anyway to ensure the user isn't stuck
-            window.location.href = "https://welcome.hireme.co.hu/thankyou.html";
+            // Since this is a JSONP/External URL, standard Fetch might hit CORS issues.
+            // Typically, MailerLite forms work best when you set the "Redirect URL" inside MailerLite dashboard.
+            // However, to force the redirect via JS as requested:
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // 'no-cors' allows the request to be sent without reading the response (avoids CORS error)
+            }).then(() => {
+                // Redirect immediately after sending data
+                window.location.href = "https://welcome.hireme.co.hu/thankyou.html";
+            }).catch(error => {
+                console.error('Error:', error);
+                // Even if there is an error, we might want to redirect or show a message
+                alert("Hiba történt a feliratkozás során. Kérjük próbálja újra.");
+            });
         });
-    });
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
