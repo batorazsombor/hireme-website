@@ -75,7 +75,7 @@ h1 {
 
 /* Newsletter Form Box */
 .newsletter-box {
-    background: rgba(255, 255, 255, 0.05); /* Very subtle background for form area if needed, otherwise transparent */
+    background: #16163F; /* Very subtle background for form area if needed, otherwise transparent */
     padding: 10px 0;
     border-radius: 10px;
 }
@@ -108,13 +108,6 @@ input[type="email"] {
     font-size: 1rem;
 }
 
-.spam-notice {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: -5px;
-    margin-bottom: 5px;
-}
-
 button[type="submit"] {
     background-color: #FF4069; /* Pink/Red accent color */
     color: white;
@@ -132,6 +125,13 @@ button[type="submit"]:hover {
     background-color: #e0365b;
 }
 
+.spam-notice {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
 /* Right Column */
 .right-col {
     flex: 1;
@@ -144,8 +144,6 @@ button[type="submit"]:hover {
 .image-wrapper img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .mockup-wrapper {
@@ -155,7 +153,6 @@ button[type="submit"]:hover {
 .workers-wrapper {
     max-width: 80%; /* The bottom image is slightly smaller in the design */
     transform: rotate(3deg); /* Slight tilt for design effect */
-    border: 5px solid rgba(255,255,255,0.1); /* Optional border */
 }
 
 /* Footer Description */
@@ -268,3 +265,4 @@ button[type="submit"]:hover {
         font-size: 2rem;
     }
 }
+
